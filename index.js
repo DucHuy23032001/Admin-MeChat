@@ -11,8 +11,6 @@ const adminRoutes = require('./routes/admin-routes');
 var session = require('express-session')
 
 const app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
@@ -23,10 +21,6 @@ app.use(session({
     saveUninitialized: true
 }))
 
-// app.use(express.urlencoded({extended: false}));
-// app.use(express.json());
-// app.use(cors());
-// app.use(bodyParser)
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -41,8 +35,4 @@ app.use(reportRoutes.routes);
 app.use(userRoutes.routes);
 app.use(adminRoutes.routes);
 
-// io.on("connection", function(socket){
-// socket.emit('check', 'helloooooo')
-// })
-
-server.listen(3000, () => console.log('App is listening on url http://localhost:3000'));
+app.listen(3000, () => console.log('App is listening on url http://localhost:3000'));
