@@ -18,13 +18,10 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.3",
-    "firebase": "^9.14.0",
-    "firebase-auth": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "node-localstorage": "^2.1.6",
-    "prompt-confirm": "^2.0.4",
-    "window": "^4.2.7"
+    "prompt-confirm": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

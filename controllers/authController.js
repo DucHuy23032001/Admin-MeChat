@@ -1,20 +1,6 @@
 'use strict';
 const bcrypt = require('bcrypt')
 const jwt = require("jsonwebtoken");
-const window = require('window')
-// const firebase = require('firebase')
-const { initializeApp } = require('firebase/app');
-const { getAuth, signInWithPhoneNumber, initializeAuth } = require("firebase/auth");
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAc5R48XRDx2jxyGscKmfCZUqcdpnnmWCw",
-    authDomain: "chat-app-50a48.firebaseapp.com",
-    projectId: "chat-app-50a48",
-    storageBucket: "chat-app-50a48.appspot.com",
-    messagingSenderId: "294060158276",
-    appId: "1:294060158276:web:182b5dd69cc88fbe56bb11",
-    measurementId: "G-R1FJ2081Y0"
-};
 
 const logOut = async (req, res, next) => {
     try {
@@ -30,36 +16,6 @@ const logOut = async (req, res, next) => {
         console.log(error);
     }
 }
-
-// const authentication = async (req, res, next) => {
-//     try {
-//         const phoneNumber = req.body.phoneNumber;
-//         const appVerifier = window.recaptchaVerifier;
-//         console.log(req.body);
-//         console.log(req.body.recaptcha);
-//         // let app = initializeAuth(firebaseConfig);
-//         const app = initializeApp(firebaseConfig);
-//         console.log("1");
-//         const auth = getAuth();
-//         console.log("2");
-//         // var credential = firebase.auth.PhoneAuthProvider.credential(confirmationResult.verificationId, code);
-//         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-//             .then((confirmationResult) => {
-//                 // SMS sent. Prompt user to type the code from the message, then sign the
-//                 // user in with confirmationResult.confirm(code).
-//                 console.log("3");
-//                 window.confirmationResult = confirmationResult;
-//                 console.log("4");
-//                 // ...
-//             }).catch((error) => {
-//                 console.log(error);
-//                 // Error; SMS not sent
-//                 // ...
-//             });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 const postLogin = async (req, res, next) => {
     try {
@@ -91,7 +47,6 @@ const postLogin = async (req, res, next) => {
                             body: JSON.stringify(_data)
                         })
                         const _jsonData = await _login.json();
-                        // res.render('authentication', { data: _jsonData._token, layout: 'loginlayout' })
                         req.session.regenerate(function (err) {
                             if (err) next(err)
                             req.session.token = _jsonData._token;
