@@ -20,23 +20,29 @@ const logOut = async (req, res, next) => {
 const postLogin = async (req, res, next) => {
     try {
         const { phoneNumber, passWord } = req.body;
+        console.log(phoneNumber);
+        let _phoneNumber = phoneNumber.slice(3,12);
+        console.log(_phoneNumber);
+        let _phoneToServer = "0" + _phoneNumber;
+        console.log(_phoneToServer);
         let _checkMK = false, _checkPhone = false, _checkRole = false, _datas;
         await fetch('https://backend-mechat-v3.cyclic.app/api/v3/users')
             .then(res => res.json())
             .then(data => _datas = data.data)
         for (let i of _datas) {
             if (i.role) {
+                console.log(i);
                 _checkRole = true;
                 let _account;
                 await fetch('https://backend-mechat-v3.cyclic.app/api/v3/accounts/' + i.phoneNumber)
                     .then(res => res.json())
                     .then(data => _account = data.data)
-                if (_account.phoneNumber == phoneNumber) {
+                if (_account.phoneNumber == _phoneToServer) {
                     _checkPhone = true
                     if (await bcrypt.compare(passWord, _account.passWord)) {
                         _checkMK = true;
                         let _data = {
-                            phoneNumber: phoneNumber,
+                            phoneNumber: _phoneToServer,
                             passWord: passWord
                         }
                         let _login = await fetch('https://backend-mechat-v3.cyclic.app/api/v3/auths/login', {
