@@ -1,47 +1,45 @@
 'use strict';
 
-function getTableReport(res,req){
+function getTableReport(res, req) {
     fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports')
-    .then(res => res.json())
-    .then(data => res.render('table-report',{data:data.data}))
+        .then(res => res.json())
+        .then(data => res.render('table-report', { data: data.data }))
 }
 //Oke
-const deleteReport = (req,res,next) =>{
+const deleteReport = (req, res, next) => {
     let _id = req.params.reportId;
     let _data = {
-        status:true
+        status: true
     }
-    fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports/' + _id,{
-        method:"DELETE",
-        headers:{
-            'Content-Type':'application/json'
+    fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports/' + _id, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
         },
-        body:JSON.stringify(_data)
+        body: JSON.stringify(_data)
     })
-    fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports')
-    .then(res => res.json())
-    .then(data => res.render('table-report',{data:data.data}))
+    getTableReport(res, req);
 }
 
 
 //OKe
-const acceptReport = (req,res,next) =>{
+const acceptReport = (req, res, next) => {
     let _id = req.params.reportId;
     let _data = {
-        status:true
+        status: true
     }
-    fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports/' + _id,{
-        method:"POST",
-        headers:{
-            'Content-Type':'application/json'
+    fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports/' + _id, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
         },
-        body:JSON.stringify(_data)
-    }).then(function(res){
+        body: JSON.stringify(_data)
+    }).then(function (res) {
         res.json();
     })
     fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports')
-    .then(res => res.json())
-    .then(data => res.render('table-report',{data:data.data}))
+        .then(res => res.json())
+        .then(data => res.render('table-report', { data: data.data }))
 }
 
 module.exports = {

@@ -1,6 +1,6 @@
 'use strict';
 
-function getTableReport(res,req){
+function getTableUserReport(res,req){
     fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports')
     .then(res => res.json())
     .then(data => res.render('table-report',{data:data.data}))
@@ -18,14 +18,11 @@ const removeBlock = (req,res,next) =>{
         },
         body:JSON.stringify(_data)
     })
-    fetch('https://backend-mechat-v3.cyclic.app/api/v3/users')
-    .then(res => res.json())
-    .then(data => res.render('table-users',{data:data.data}))
+    getTableUserReport(res,req)
 }
 
 const getUserById = (req,res,next) =>{
     let _id = req.params.userId;
-
     fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/' + _id)
     .then(res => res.json())
     .then(data => res.render('user-item',{data:data.data}))
