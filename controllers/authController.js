@@ -121,9 +121,13 @@ const postChangePassword = async (req, res) => {
 }
 
 const loginView = async (req, res, next) => {
-    fetch('https://backend-mechat-v3.cyclic.app/api/v3/accounts')
+    try {
+        fetch('https://backend-mechat-v3.cyclic.app/api/v3/accounts')
         .then(res => res.json())
         .then(data => res.render('login', { data: data.data, layout: 'loginlayout', checkMK: true, checkPhone: true, checkRole: true }))
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = {
