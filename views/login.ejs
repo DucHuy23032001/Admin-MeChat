@@ -28,14 +28,11 @@
             <input type="password" class="form-control" id="passWord" name="passWord" required>
           </div>
           <div id="recaptcha-container" name = "recaptcha"></div>
-          <%if(!checkRole){%>
-            <p class="text-red">Tài khoản không tồn tại!</p>
-            <%}%>
               <%if(!checkMK){%>
-                <p class="text-red">Vui lòng kiểm tra lại mật khẩu!</p>
+                <p class="text-red">Vui lòng kiểm tra mật khẩu!</p>
                 <%}%>
                   <%if(!checkPhone){%>
-                    <p class="text-red">Vui lòng kiểm tra lại số điện thoại!</p>
+                    <p class="text-red">Vui lòng kiểm tra số điện thoại!</p>
                     <%}%>
                       <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -1,14 +1,5 @@
 'use strict';
 
-function getTableReport(res, req) {
-    try {
-        fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports')
-        .then(res => res.json())
-        .then(data => res.render('table-report', { data: data.data }))
-    } catch (error) {
-        console.log(error);
-    }
-}
 //Oke
 const deleteReport = (req, res, next) => {
     try {
@@ -22,14 +13,11 @@ const deleteReport = (req, res, next) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(_data)
-        })
-        getTableReport(res, req);
+        }).then(data=> res.redirect('/'))
     } catch (error) {
         console.log(error);
     }
 }
-
-
 //OKe
 const acceptReport = (req, res, next) => {
     try {
@@ -43,10 +31,16 @@ const acceptReport = (req, res, next) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(_data)
-        }).then(function (res) {
-            res.json();
-        })
-        getTableReport(res, req);
+        }).then(data=> res.redirect('/'))
+    } catch (error) {
+        console.log(error);
+    }
+}
+const reportItem = (req, res, next) => {
+    try {
+        fetch('https://backend-mechat-v3.cyclic.app/api/v3/reports/' + req.params.reportId)
+            .then(res => res.json())
+            .then(data => res.render('report-item', { data: data }))
     } catch (error) {
         console.log(error);
     }
@@ -54,5 +48,6 @@ const acceptReport = (req, res, next) => {
 
 module.exports = {
     deleteReport,
-    acceptReport
+    acceptReport,
+    reportItem
 }

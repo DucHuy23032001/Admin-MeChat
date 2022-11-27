@@ -2,15 +2,15 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const cors = require('cors');
+const app = express();
+var session = require('express-session')
+
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes');
 const homeRoutes = require('./routes/home-routes');
 const reportRoutes = require('./routes/report-routes');
 const userRoutes = require('./routes/user-routes');
 const adminRoutes = require('./routes/admin-routes');
-var session = require('express-session')
-
-const app = express();
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');

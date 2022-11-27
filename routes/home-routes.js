@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {indexView,tableReportView, profileView, tableView, reportItem,changePassView} = require('../controllers/homeController');
+const {indexView, profileView, tableView,tableReportView,changePassView} = require('../controllers/homeController');
 const router = express.Router();
 
 function isAuthenticated (req, res, next) {
@@ -11,9 +11,8 @@ function isAuthenticated (req, res, next) {
 router.get('/',isAuthenticated,tableReportView);
 router.get('/',indexView);
 router.get('/profile',isAuthenticated, profileView);
-router.get('/table-report',isAuthenticated,tableReportView)
-router.get('/table',isAuthenticated, tableView);
-router.get('/report-item/:reportId',isAuthenticated,reportItem)
+// router.get('/table-reports',isAuthenticated, tableReportView);
+router.get('/table-users',isAuthenticated, tableView);
 router.get('/change-password',isAuthenticated,changePassView)   
 
 module.exports = {

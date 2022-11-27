@@ -1,15 +1,15 @@
 <div class="header bg-white pb-6">
     <div class="container-fluid">
-      <div class="header-body">
-        <div class="row align-items-center py-2">
-          <div class="col-lg-6 col-7">
-            <h6 class="h2 text-black d-inline-block mb-0">Chi tiết báo cáo</h6>
-            </nav>
-          </div>
+        <div class="header-body">
+            <div class="row align-items-center py-2">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-black d-inline-block mb-0">Chi tiết báo cáo</h6>
+                    </nav>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 <div class="container-fluid mt--6">
     <div class="row">
         <div class="col-xl-12 order-xl-1">
@@ -92,7 +92,7 @@
                             <br>
                             <div class="row">
                                 <label class="form-control-label col-4">Hình ảnh xác thực: </label>
-                                <div class="col-8 text-center" >
+                                <div class="col-8 text-center">
                                     <img height="300px" src="<%= data.image%>" alt="">
                                 </div>
                             </div>
@@ -100,12 +100,11 @@
                     </form>
                     <hr class="my-4" />
                     <div class="text-right">
-                        <a href="/accept/<%= data.id%>"  onclick="return confirm('Xác nhận chấp nhận báo cáo?');">
-                            <button style="border: none;" class="bg-red text-white px-2 py-1" required>Chấp nhận</button>
+                        <a href="/accept/<%= data.id%>" onclick="return confirm('Xác nhận chấp nhận báo cáo?');">
+                            <button style="border: none;" class="bg-red text-white px-2 py-1">Chấp nhận</button>
                         </a>
-                        <a href="/delete/<%= data.id%>"  onclick="return confirm('Xác nhận bỏ qua báo cáo?');">
-                            <button type="submit" style="border: none;" class="bg-primary text-white px-2 py-1">Bỏ
-                                qua</button>
+                        <a href="/delete/<%= data.id%>" onclick="return confirm('Xác nhận bỏ qua báo cáo?');">
+                            <button style="border: none;" class="bg-primary text-white px-2 py-1">Bỏ qua</button>
                         </a>
                     </div>
                 </div>

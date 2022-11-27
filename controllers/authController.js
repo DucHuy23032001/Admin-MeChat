@@ -20,13 +20,12 @@ const logOut = async (req, res, next) => {
 const postLogin = async (req, res, next) => {
     try {
         const { phoneNumber, passWord } = req.body;
-        let _checkMK = false, _checkPhone = false, _checkRole = false, _datas;
+        let _checkMK = false, _checkPhone = false, _datas;
         await fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/admin')
             .then(res => res.json())
             .then(data => _datas = data.data)
         for (let i of _datas) {
             if (i.role) {
-                _checkRole = true;
                 let _account;
                 await fetch('https://backend-mechat-v3.cyclic.app/api/v3/accounts/' + i.phoneNumber)
                     .then(res => res.json())
@@ -64,17 +63,12 @@ const postLogin = async (req, res, next) => {
                 }
             }
         }
-        if (_checkRole == false) {
-            _checkPhone = true;
+        if (_checkPhone == false) {
             _checkMK = true;
-            res.render('login', { checkPhone: _checkPhone, checkMK: _checkMK, checkRole: _checkRole, layout: 'loginlayout' })
-        }
-        else if (_checkPhone == false) {
-            _checkMK = true;
-            res.render('login', { checkPhone: _checkPhone, checkMK: _checkMK, checkRole: _checkRole, layout: 'loginlayout' })
+            res.render('login', { checkPhone: _checkPhone, checkMK: _checkMK, layout: 'loginlayout' })
         }
         else if (_checkMK == false) {
-            res.render('login', { checkPhone: _checkPhone, checkMK: _checkMK, checkRole: _checkRole, layout: 'loginlayout' })
+            res.render('login', { checkPhone: _checkPhone, checkMK: _checkMK, layout: 'loginlayout' })
         }
     } catch (error) {
         console.log(error);
@@ -123,8 +117,8 @@ const postChangePassword = async (req, res) => {
 const loginView = async (req, res, next) => {
     try {
         fetch('https://backend-mechat-v3.cyclic.app/api/v3/accounts')
-        .then(res => res.json())
-        .then(data => res.render('login', { data: data.data, layout: 'loginlayout', checkMK: true, checkPhone: true, checkRole: true }))
+            .then(res => res.json())
+            .then(data => res.render('login', { data: data.data, layout: 'loginlayout', checkMK: true, checkPhone: true, checkRole: true }))
     } catch (error) {
         console.log(error);
     }
