@@ -11,7 +11,6 @@ function isAuthenticated (req, res, next) {
 router.get('/',isAuthenticated,tableReportView);
 router.get('/',indexView);
 router.get('/profile',isAuthenticated, profileView);
-// router.get('/table-reports',isAuthenticated, tableReportView);
 router.get('/table-users',isAuthenticated, tableView);
 router.get('/change-password',isAuthenticated,changePassView)   
 
