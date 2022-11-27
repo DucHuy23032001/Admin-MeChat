@@ -7,7 +7,7 @@ function isAuthenticated (req, res, next) {
     else next('route')
 }
 router.post('/update-text/:adminId',isAuthenticated,adminController.updateText);
-router.post('/change-avatar/:adminId',isAuthenticated,adminController.changeAvatar);
+router.get('/change-avatar',isAuthenticated,adminController.changeAvatar);
 
 module.exports = {
     routes: router

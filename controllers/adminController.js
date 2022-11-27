@@ -1,4 +1,5 @@
 'use strict';
+const jwt = require("jsonwebtoken");
 
 //Oke
 const updateText = async (req, res, next) => {
@@ -34,20 +35,13 @@ const updateText = async (req, res, next) => {
 //test
 const changeAvatar = async (req, res, next) => {
     try {
-        console.log(req.body)
-        const { file } = req.body;
-        console.log(file);
-        let _data = {
-            avatarLink: file,
-        }
-        await fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/' + _id, {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(_data)
-        })
-        res.redirect('/profile');
+        let _token = req.session.token
+        let _user
+        const _decode = jwt.verify(_token, 'secretMeChat');
+        await fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/' + _decode._id)
+        .then(res => res.json())
+        .then(data => _user = data.data)
+        res.render('page-404',{data:_user});
     } catch (error) {
         console.log(error);
     }
