@@ -51,6 +51,7 @@ const postLogin = async (req, res, next) => {
                             req.session.token = _jsonData._token;
                             req.session.save(function (err) {
                                 if (err) return next(err)
+                                console.log(req.session.token);
                                 res.redirect('/')
                             })
                         })
@@ -77,11 +78,10 @@ const postLogin = async (req, res, next) => {
 
 const postChangePassword = async (req, res) => {
     try {
-        let _token = req.session.token
+        let _token = req.session.token;
+        let _user,_account;
         const _decode = jwt.verify(_token, 'secretMeChat');
         const { passWord, newPassword, confirmPassword } = req.body;
-        let _user;
-        let _account;
         await fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/' + _decode._id)
             .then(res => res.json())
             .then(data => _user = data.data)
