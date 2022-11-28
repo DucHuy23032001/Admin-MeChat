@@ -19,15 +19,14 @@ const updateText = async (req, res, next) => {
             birthday:_date,
             bio: bio
         }
-        console.log(_data);
+        console.log("body:" , _data);
         fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/' + _id, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(_data)
-        }).then(data=>console.log(data))
-        res.redirect('/profile')
+        }).then(data=>res.redirect('/profile')) 
     } catch (error) {
         console.log(error);
     }

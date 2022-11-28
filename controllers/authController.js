@@ -51,7 +51,6 @@ const postLogin = async (req, res, next) => {
                             req.session.token = _jsonData._token;
                             req.session.save(function (err) {
                                 if (err) return next(err)
-                                console.log(req.session.token);
                                 res.redirect('/')
                             })
                         })

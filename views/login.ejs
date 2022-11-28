@@ -27,14 +27,15 @@
             <label class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="passWord" name="passWord" required>
           </div>
-          <div id="recaptcha-container" name = "recaptcha"></div>
-              <%if(!checkMK){%>
-                <p class="text-red">Vui lòng kiểm tra mật khẩu!</p>
+          <%if(!checkMK){%>
+            <p class="text-red">Vui lòng kiểm tra mật khẩu!</p>
+            <%}%>
+              <%if(!checkPhone){%>
+                <p class="text-red">Vui lòng kiểm tra số điện thoại!</p>
                 <%}%>
-                  <%if(!checkPhone){%>
-                    <p class="text-red">Vui lòng kiểm tra số điện thoại!</p>
-                    <%}%>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
         </form>
       </div>
     </div>

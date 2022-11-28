@@ -23,7 +23,7 @@
                   <img src="<%= data.avatarLink%>" height="150px" width="150px" alt="">
                   <hr class="my-4" />
                   <a href="/change-avatar"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Sửa ảnh đại diện</button></a>
+                      data-bs-target="#staticBackdrop">Sửa ảnh đại diện</button></a>
                 </div>
               </div>
               <div class="col-lg-9">
@@ -96,18 +96,10 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Giới tính</label>
-                    <% let gender ;%>
-                      <%if(data.gender==1){ gender="Nữ" %>
-                        <%}%>
-                          <%if(data.gender==0){ gender="Nam" %>
-                            <%}%>
-                              <select class="form-select" id="gender" name="gender">
-                                <option selected>
-                                  <%= gender%>
-                                </option>
-                                <option value="1">Nam</option>
-                                <option value="2">Nữ</option>
-                              </select>
+                    <select class="form-select" id="gender" name="gender">
+                      <option value="1" selected>Nam</option>
+                      <option value="2">Nữ</option>
+                    </select>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Ngày sinh </label>

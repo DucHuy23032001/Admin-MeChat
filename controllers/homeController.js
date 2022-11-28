@@ -51,7 +51,6 @@ const tableReportView = async (req, res, next) => {
 
 const tableView = (req, res, next) => {
     try {
-        console.log(_userMain);
         fetch('https://backend-mechat-v3.cyclic.app/api/v3/users/')
             .then(res => res.json())
             .then(data => res.render('table-user', { users: data.data,data:_userMain }))
